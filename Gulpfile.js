@@ -24,15 +24,15 @@ gulp.task('minify-images', function () {
         width: 480,
         rename: { suffix: '-480px' },
       },
-        // {
-        //   quality: 25,
-        //   width: 600,
-        //   rename: { suffix: '-600px' },
-        // }, 
-        // {
-        //   // Compress, strip metadata, and rename original image
-        //   rename: { suffix: '-original' },
-        // }
+        {
+          quality: 25,
+          width: 600,
+          rename: { suffix: '-600px' },
+        }, 
+        {
+          // Compress, strip metadata, and rename original image
+          rename: { suffix: '-original' },
+        }
       ]
     }
     ))
@@ -49,15 +49,14 @@ gulp.task('compressJs', function () {
       exclude: ['tasks'],
       ignoreFiles: ['.combo.js', '-min.js']
     }))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist/js'))
 });
 
 gulp.task('minify-css', () => {
   return gulp.src('css/*.css')
     .pipe(cleanCSS({ compatibility: 'ie8' }))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/css'));
 });
-
 
 gulp.task('watch', function () {
   var watcherJs = gulp.watch('js/**/*.js');
